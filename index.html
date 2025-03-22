@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Lapating</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sol Onitsuka Shoe Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            
+            <!-- Sign In button (Hidden when logged in) -->
+            <a href="login.html" id="sign-in-btn">Sign In</a>
+
+            <!-- Profile button (Hidden when not logged in) -->
+            <a href="profile.html" id="profile-btn" style="display: none;">Profile</a>
+
+            <!-- Logout button (Hidden when not logged in) -->
+            <button id="logout-btn" style="display: none;">Logout</button>
+        </nav>
+    </header>
+
+    <h2>Products</h2>
+
+    <div class="product">
+        <img src="images/product1.jpg" alt="Product 1">
+        <p> MEXICO 66 - YELLOW/BLACK - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - YELLOW/BLACK" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product2.jpg" alt="Product 2">
+        <p>MEXICO 66 - WHITE RED/GREEN - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - WHITE RED/GREEN" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product3.jpg" alt="Product 3">
+        <p>MEXICO 66 - BLACK/WHITE - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - BLACK/WHITE" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product4.jpg" alt="Product 4">
+        <p>MEXICO 66 - WHITE/BLACK - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - WHITE/BLACK" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product5.jpg" alt="Product 5">
+        <p>MEXICO 66 - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product6.jpg" alt="Product 6">
+        <p>BIRCH/PEACOAT - WHITE/BLACK - $1999</p>
+        <button class="add-to-cart" data-name="BIRCH/PEACOAT - WHITE/BLACK" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product7.jpg" alt="Product 7">
+        <p>MEXICO 66 - PEACH/GREEN - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - PEACH/GREEN" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product8.jpg" alt="Product 8">
+        <p>MEXICO 66 LOW - WHITE/BLACK - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 LOW - WHITE/BLACK" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product9.jpg" alt="Product 9">
+        <p>MEXICO 66 - WHITE/RED - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - WHITE/RED" data-price="1999">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/product10.jpg" alt="Product 10">
+        <p>MEXICO 66 - WHITE BLUE/RED - $1999</p>
+        <button class="add-to-cart" data-name="MEXICO 66 - WHITE BLUE/RED" data-price="1999">Add to Cart</button>
+    </div>
+
+
+    <script src="script.js"></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let loggedInUser = JSON.parse(localStorage.getItem("user")) || null;
+
+        function updateNavButtons() {
+            const signInButton = document.getElementById("sign-in-btn");
+            const profileButton = document.getElementById("profile-btn");
+            const logoutButton = document.getElementById("logout-btn");
+
+            if (loggedInUser) {
+                if (signInButton) signInButton.style.display = "none";
+                if (profileButton) profileButton.style.display = "inline";
+                if (logoutButton) logoutButton.style.display = "inline";
+            } else {
+                if (signInButton) signInButton.style.display = "inline";
+                if (profileButton) profileButton.style.display = "none";
+                if (logoutButton) logoutButton.style.display = "none";
+            }
+        }
+
+        updateNavButtons();
+
+        // Logout Function - Redirects to Sign In Page
+        document.getElementById("logout-btn").addEventListener("click", function () {
+            localStorage.removeItem("user"); // Remove user data
+            window.location.href = "login.html"; // Redirect to login page
+        });
+    });
+</script>
+
+</body>
+</html>
